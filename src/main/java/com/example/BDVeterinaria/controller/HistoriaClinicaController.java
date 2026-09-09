@@ -1,7 +1,7 @@
 package com.example.BDVeterinaria.controller;
 
-import com.example.BDVeterinaria.entity.Propietario;
-import com.example.BDVeterinaria.service.PropietarioService;
+import com.example.BDVeterinaria.entity.HistoriaClinica;
+import com.example.BDVeterinaria.service.HistoriaClinicaService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -11,36 +11,35 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/propietario")
+@RequestMapping("/api/historiaClinica")
 @RequiredArgsConstructor
-public class PropietarioController {
+public class HistoriaClinicaController {
 
-    private final PropietarioService service;
+    private final HistoriaClinicaService service;
 
     @GetMapping("/listar")
-    public List<Propietario> listar() {
+    public List<HistoriaClinica> listar(){
         return service.listarTodos();
     }
 
     @GetMapping("/buscar/{id}")
-    public Propietario buscar(@PathVariable Long id) {
+    public HistoriaClinica buscar(@PathVariable Long id){
         return service.buscarPorId(id);
     }
 
     @PostMapping("/guardar")
-    public ResponseEntity<Propietario> guardar(@Valid @RequestBody Propietario propietario) {
-
+    public ResponseEntity<HistoriaClinica> guardar(@Valid @RequestBody HistoriaClinica historiaClinica){
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(service.guardar(propietario));
+                .body(service.guardar(historiaClinica));
     }
 
-    @PutMapping("/actualizar/{id}")
-    public Propietario actualizar(@PathVariable Long id, @Valid @RequestBody Propietario propietario) {
-        return service.actualizar(id, propietario);
+    @PutMapping("/actualizar")
+    public HistoriaClinica actualizar(@PathVariable Long id, @Valid @RequestBody HistoriaClinica historiaClinica){
+        return service.actualizar(id, historiaClinica);
     }
 
-    @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar")
     public ResponseEntity<Void> eliminar (@PathVariable Long id){
         service.eliminar(id);
 

@@ -1,9 +1,7 @@
 package com.example.BDVeterinaria.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -12,6 +10,8 @@ import java.time.LocalDate;
 @Builder
 @Entity
 @Table(name = "historia_clinica")
+@Getter
+@Setter
 public class HistoriaClinica {
 
     @Id
