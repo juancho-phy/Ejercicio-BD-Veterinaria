@@ -1,9 +1,7 @@
 package com.example.BDVeterinaria.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -12,6 +10,8 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "mascota")
+@Setter
+@Getter
 public class Mascota {
 
     @Id
